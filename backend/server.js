@@ -1,39 +1,42 @@
 // backend/server.js
+console.log("--- Server process starting ---");
+
 const express = require("express");
 const cors = require("cors");
 const connectDB = require('./config/db');
 
-// Connect to the database first.
-connectDB();
+console.log("--- Dependencies imported ---");
 
-// Initialize the Express App
+// --- Initialize App ---
 const app = express();
+console.log("--- Express app initialized ---");
+
 
 // --- Middleware Configuration ---
-
-// 1. Configure CORS options
 const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 const corsOptions = {
   origin: allowedOrigin,
 };
 
-// 2. THIS IS THE FIX: Enable CORS pre-flight across-the-board.
-// This tells Express to respond to all OPTIONS requests with the CORS headers.
-app.options('*', cors(corsOptions));
+// FOR DEBUGGING: Let's temporarily allow all origins to eliminate CORS as a variable.
+// We will change this back later.
+app.use(cors());
 
-// 3. Use the CORS middleware for all other requests.
-app.use(cors(corsOptions));
-
-// 4. Use the body parser middleware.
 app.use(express.json());
+console.log("--- Middleware (CORS, JSON) applied ---");
+
 
 // --- API Routes ---
-// Wire up the routes AFTER all middleware.
 app.use('/api', require('./routes/apiRoutes.js'));
+console.log("--- API routes wired up ---");
 
-// --- Start Server ---
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 
-// Export the app for Vercel's serverless environment.
+// --- Database Connection ---
+// We connect to the DB after setting up routes.
+connectDB();
+
+// --- Export for Vercel ---
+// This is what Vercel will use.
 module.exports = app;
+
+console.log("--- Server module exported ---");
