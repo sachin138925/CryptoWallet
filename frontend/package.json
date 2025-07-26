@@ -1,28 +1,20 @@
 {
-  "name": "token-transfer",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.10.0",
-    "bcrypt": "^6.0.0",
     "clsx": "^2.1.1",
-    "cors": "^2.8.5",
-    "crypto-js": "^4.2.0",
-    "dotenv": "^17.2.0",
-    "ethers": "^6.15.0",
-    "framer-motion": "^12.23.6",
-    "mongoose": "^8.16.4",
-    "qrcode.react": "^4.2.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-hot-toast": "^2.5.2",
-    "react-qr-code": "^2.0.18",
-    "react-scripts": "^5.0.1",
+    "ethers": "^6.13.1",
+    "qrcode.react": "^3.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.4.1",
+    "react-qr-code": "^2.0.13",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -32,14 +24,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-  "extends": [
-    "react-app",
-    "react-app/jest"
-  ],
-  "env": {
-    "es2020": true
-  }
-},
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "env": {
+      "es2020": true
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
